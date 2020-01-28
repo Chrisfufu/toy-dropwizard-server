@@ -32,12 +32,12 @@ jobs:
         working-directory: .
         run: docker-compose up -d --build
       - name: Install pytest
+        working-directory: .
         run:
           pip install -U requests && pip install pytest
       - name: GitHub Action for pytest
-        uses: actions/checkout@v1
-        with:
-          args: pytest
+        working-directory: .
+        run: pytest
       - name: Docker-Compose down
         working-directory: .
         run: docker-compose down
