@@ -24,7 +24,7 @@ jobs:
               working-directory: .
               run: ./gradlew test
 
-    GitHub Action for pytest:
+    GitHub-Action-for-pytest:
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v1
