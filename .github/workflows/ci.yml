@@ -37,6 +37,5 @@ jobs:
           pip3 install pytest
       - name: GitHub Action for pytest
         uses: actions/checkout@v1
-        working-directory: .
         with:
           args: pytest
