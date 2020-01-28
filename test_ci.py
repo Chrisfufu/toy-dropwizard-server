@@ -1,5 +1,6 @@
 import requests
 import pytest # have to install via command "pip3 install -U pytest"
+import json
 
 def test_health_check():
     r = requests.get('http://localhost:8085')
@@ -8,3 +9,17 @@ def test_health_check():
 # 1. Add two more tests here of your choice. I will explain the API.
 #    Make sure to verify the necessary info, e.g., status code, response data.
 # 2. Add "pytest" as integration testing script as part of Github Actions CI workflow (you've done this before!)
+
+def testGoodStatus():
+    r = requests.get('http://localhost:8085/hello-world')
+    assert(r.status_code == 200)
+
+def testContent():
+    r = requests.get('http://localhost:8085/hello-world?name=zuofu')
+    # print(r.content)
+
+    content = r.json()
+    # content = content.json()
+    # print(content['content'])
+    # print(json.load(content.json()))
+    assert(content['content']== 'Hello, zuofu!')

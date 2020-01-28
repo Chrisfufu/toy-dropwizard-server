@@ -24,4 +24,17 @@ jobs:
               working-directory: .
               run: ./gradlew test
 
-
+    GitHub Action for pytest:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v1
+      - name: Docker-Compose
+        run: docker-compose up -d --build
+      - name: Install pytest
+        run:
+          pip3 install -U requests
+          pip3 install pytest
+      - name: GitHub Action for pytest
+        uses: actions/checkout@v1
+        with:
+          args: pytest -h
